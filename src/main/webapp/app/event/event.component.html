@@ -2,7 +2,7 @@
     <mat-drawer mode="side" opened style=" max-width:30%; word-break:keep-all;">
         <h2 style="font-weight: bold">{{event.title}}</h2>
 
-        <a [routerLink]="['/events/add', event.userGroup.id]" class="btn btn-primary" (click)="editEvent()"> Edit event</a>
+        <div [routerLink]="['/events/add', event.userGroup.id]" class="btn btn-primary" (click)="editEvent()"> Edit event</div>
 
         <h3 class="text-success" jhiTranslate="event-page.sidebar.dateTime" style="font-weight: bold">Date and
             time:</h3>
