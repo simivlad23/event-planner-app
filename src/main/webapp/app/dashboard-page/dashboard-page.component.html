@@ -1,0 +1,143 @@
+<p-toast [hideTransitionOptions]="'0ms'" [showTransitionOptions]="'0ms'" [style]="{marginTop: '80px'}"
+         life="2000"></p-toast>
+
+<p-toast [baseZIndex]="5000" [modal]="true" key="c" position="center">
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+            <h3>{{message.summary}}</h3>
+            <p>{{message.detail}}</p>
+            <textarea [(ngModel)]="requestMessage" [cols]="30" [rows]="3" autoResize="autoResize" id="requestMessage"
+                      name="requestMessage" pInputTextarea></textarea>
+        </div>
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-6">
+                <button (click)="onConfirm()" class="ui-button-raised ui-button-success" label="Yes"
+                        pButton type="button"></button>
+            </div>
+            <div class="ui-g-6">
+                <button (click)="onReject()" class="ui-button-raised ui-button-danger" label="No"
+                        pButton type="button"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+
+<nav class="navbar navbar-light bg-light mb-5">
+    <a class="btn btn-success btn-lg text-right" jhiTranslate="dashboard-page.navbar.buttonTitle"
+       routerLink="/userGroup/addGroup">Add new group</a>
+</nav>
+
+<p-dataView #dv (onLazyLoad)="loadGroups($event)" [lazy]="true" [paginator]="true" [rows]="5"
+            [totalRecords]="totalRecords"
+            [value]="userGroups" filterBy="name" paginatorPosition="both">
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <div class="ui-g">
+            </div>
+        </div>
+    </p-header>
+    <ng-template let-group pTemplate="listItem">
+        <div class="div1">
+            <div class="card-header text-right">
+                <h4 *ngIf="checkUserParticipants(group)" class="text-left align-middle font-weight-bold">
+                    <a [routerLink]="['group-page',group.id]" class="linkRoute"
+                       routerLinkActive="active">{{ group.name }}</a>
+                </h4>
+                <h4 *ngIf="!(checkUserParticipants(group))" class="text-left align-middle font-weight-bold">
+                    {{ group.name }}
+                </h4>
+                <ng-container
+                    *ngIf="checkUserParticipants(group) ; then isPresentInGroup; else isNotPresent">
+                </ng-container>
+                <ng-template #isPresentInGroup>
+                    <div>
+                        <a [routerLink]="['/events/add', group.id]" class="btn btn-primary btn-md text-center"
+                           jhiTranslate="dashboard-page.dashboard.buttonTitle"
+                           style="font-size: 16px;color:white">
+                            Add new event
+                        </a>
+                    </div>
+                </ng-template>
+                <ng-template #isNotPresent>
+                    <div>
+                        <ng-container
+                            *ngIf="checkUserWaitingList(group) ; then isWaiting; else isNotPresentInGroup">
+                        </ng-container>
+                        <ng-template #isWaiting>
+                            <div>
+                                <a (click)="waitingButtonPress()" class="btn btn-info btn-md text-center"
+                                   jhiTranslate="dashboard-page.dashboard.pendding"
+                                   style="font-size: 16px; color:white">
+                                    Pending
+                                </a>
+                            </div>
+                        </ng-template>
+                        <ng-template #isNotPresentInGroup>
+                            <div>
+                                <a (click)="sentJoinRequest(group)" class="btn btn-success btn-md text-center"
+                                   jhiTranslate="dashboard-page.dashboard.joinGroup"
+                                   style="font-size: 16px;color:white">
+                                    Join Group
+                                </a>
+                            </div>
+                        </ng-template>
+                    </div>
+                </ng-template>
+            </div>
+            <div class="card-body" class="text-center">
+                <a (click)="getAllEventsForGroup(group.id)" [attr.aria-expanded]="!checkCollapseForGroup(group.id)"
+                   aria-controls="collapseExample" class="card-text text-success">
+                    <p class="font-italic" jhiTranslate="dashboard-page.dashboard.linkTitle" style="font-size: 18px;">
+                        View All
+                        Events</p>
+                </a>
+                <div [ngbCollapse]="checkCollapseForGroup(group.id)" id="collapseExample">
+                    <div *ngIf="!isListForGroupEmpty(group.id); else otherCondition">
+
+                        <ul *ngFor="let event of allEventsForGroup.get(group.id), let eventIndex = index"
+                            class="list-group">
+                            <li class="list-group-item  list-group-item-success text-left">
+                                <jhi-counter *ngIf="checkUserParticipants(group)" [_eventId]="event.id"></jhi-counter>
+                                <div class="align-bottom">
+                                    <ng-container
+                                        *ngIf="checkUserParticipants(group) ; then isPresentInGroup; else isNotPresent">
+                                    </ng-container>
+                                    <ng-template #isPresentInGroup>
+                                        <a [routerLink]="['/events', event.id]"
+                                           class="font-weight-bold fontText linkRoute"
+                                           ngbTooltip="{{ event.description}}" placement="right"
+                                           tooltipClass="my-custom-class">{{ event.title}}</a>
+                                    </ng-template>
+                                    <ng-template #isNotPresent>
+                                        <span class="font-weight-bold fontText" ngbTooltip="{{ event.description}}"
+                                             placement="right">{{ event.title}}</span>
+                                    </ng-template>
+                                    <br>
+                                    <br>
+                                    <div class="badge badge-light" style="font-size: 14px">
+                                        {{ event.eventCategory.name }}
+                                    </div>&nbsp; &nbsp;
+                                    <div *ngFor="let subcategory of event.eventSubcategories"
+                                         class="badge badge-secondary" style="font-size: 14px; margin-right: 5px">
+                                        {{ subcategory.name }}
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ng-template #otherCondition>
+                        <div class="div1">
+                            <ul class="list-group">
+                                <li class="list-group-item  list-group-item-success"
+                                    jhiTranslate="dashboard-page.dashboard.noEventsMessage">There are no events.
+                                </li>
+                            </ul>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-dataView>

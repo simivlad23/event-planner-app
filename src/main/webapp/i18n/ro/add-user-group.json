@@ -1,0 +1,9 @@
+{
+  "add-user-group": {
+    "title": "Creeaza un grup",
+    "name": "Numele Grupului",
+    "select-mess": "Selectati utilizatorii",
+    "selected": "Selectati",
+    "createButton": "Creare grup"
+  }
+}

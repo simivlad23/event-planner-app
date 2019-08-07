@@ -1,0 +1,30 @@
+.icon {
+  //height: 10%;
+  width: 30px;
+}
+
+.items {
+  position: relative;
+  border: 1px solid #ddd;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+
+.table {
+  float: right;
+  width: 10%;
+  border: 0px;
+  text-align: center;
+}
+
+.table td {
+  min-width: 50px;
+}
+
+.buttonUnchose:hover {
+  opacity: 1;
+}
+
+.buttonUnchose {
+  opacity: 0.5;
+}

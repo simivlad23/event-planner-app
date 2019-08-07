@@ -1,0 +1,54 @@
+<h2 jhiTranslate="comment.title" style="font-weight: bold">
+    Comments:
+</h2>
+<div *ngFor="let comment of comments">
+    <div>
+        <hr>
+        <div *ngIf="comment.user.id === user.id">
+            <div style="float: left; text-align: center">
+                <ngx-avatar [name]="comment.user.firstName + ' ' + comment.user.lastName" bgColor="#afe2ff" size="120">
+                </ngx-avatar>
+                <h5>
+                    {{comment.user.firstName}}<br>{{comment.user.lastName}}
+                </h5>
+            </div>
+            <br>
+            <h4 class="box2 sb">
+                {{comment.text}}
+                <button (click)="delete(comment.id)" style="float: right; background-color: transparent; border: none">
+                    x
+                </button>
+            </h4>
+        </div>
+        <div *ngIf="comment.user.id !== user.id">
+            <div style="float: left ; text-align: center">
+                <ngx-avatar [name]="comment.user.firstName + ' ' + comment.user.lastName" bgColor="#aaffaa" size="120">
+                </ngx-avatar>
+                <h5>
+                    {{comment.user.firstName}}<br>{{comment.user.lastName}}
+                </h5>
+            </div>
+            <br>
+            <h4 class="box1 sb">
+                {{comment.text}}
+            </h4>
+        </div>
+        <br>
+        <h6 style="float: right; margin-right: 0.5cm">
+            {{comment.dateTime| date:'yyyy-MM-dd HH:mm'}}
+        </h6>
+    </div>
+    <br>
+    <br>
+</div>
+<br>
+<div>
+    <form (ngSubmit)="save()" [formGroup]="commentForm" name="subcategoryForm">
+        <h3 class="form-control-label" for="text" jhiTranslate="comment.enter-message">Enter comment:</h3>
+        <input autocomplete="off" class="form-control" formControlName="text" id="text" name="text" type="text">
+        <button [disabled]="commentForm.invalid || isSaving" class="btn btn-primary" jhiTranslate="comment.send-button"
+                type="submit">Send comment
+        </button>
+    </form>
+</div>
+

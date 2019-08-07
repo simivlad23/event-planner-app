@@ -1,0 +1,29 @@
+{
+  "event-category": {
+    "page-title": "Event category",
+    "validate": {
+      "name": {
+        "required": "The name is required!",
+        "minlength": "Name is required to be at least 3 character!",
+        "maxlength": "Name cannot be longer than 50 characters!"
+      }
+    },
+    "form": {
+      "name": "Category name:",
+      "button": "Save",
+      "response": {
+        "success": "Category added.",
+        "null": "Category name could not be transmitted properly",
+        "same-name": "This category already exists!",
+        "error": "An unexpected error occur"
+      }
+    },
+    "view": {
+      "title": "Categories and their subcategories:"
+    },
+    "subcategory": {
+      "add": "Add subcategory",
+      "delete": "Delete subcategory"
+    }
+  }
+}

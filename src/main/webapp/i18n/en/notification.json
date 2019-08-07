@@ -1,0 +1,9 @@
+{
+  "notifications": {
+    "title": "Notifications",
+    "details": "Show details",
+    "filter": "Filter",
+    "read": "read",
+    "unread": "unread"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "dashboard-page": {
+    "navbar": {
+      "buttonTitle": "Adauga grup"
+    },
+    "dashboard": {
+      "buttonTitle": "Adauga eveniment",
+      "joinGroup": "Alatura-te grupului",
+      "pendding": "In asteptare",
+      "linkTitle": "Vizualizare evenimente",
+      "noEventsMessage": "Nu exista niciun eveniment. Fii primul care propune unul!"
+    }
+  }
+}

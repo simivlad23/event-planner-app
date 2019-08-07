@@ -1,0 +1,11 @@
+{
+  "group-page": {
+    "page-title": "Group",
+    "button": {
+      "go-event-page": "Create event",
+      "view-users": "Show users",
+      "show-add-users-popup": "Add users to group",
+      "add-users": "Add"
+    }
+  }
+}

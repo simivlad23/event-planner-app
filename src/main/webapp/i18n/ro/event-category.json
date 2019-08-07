@@ -1,0 +1,29 @@
+{
+  "event-category": {
+    "page-title": "Categorii eveniment",
+    "validate": {
+      "name": {
+        "required": "Numele este necesar.",
+        "minlength": "Numele trebuie sa contina cel putin 3 caractere ",
+        "maxlength": "Numele nu poate fi mai mare de 50 de caractere"
+      }
+    },
+    "form": {
+      "name": "Numele categoriei:",
+      "button": "Salvare",
+      "response": {
+        "success": "Categorie adaugata.",
+        "null": "Numele categoriei nu s-a putut transmite.",
+        "same-name": "Categoria exista deja!",
+        "error": "O eroare neasteaptata a aparut."
+      }
+    },
+    "view": {
+      "title": "Categorii si subcategorii:"
+    },
+    "subcategory": {
+      "add": "Adauga subcategorii",
+      "delete": "Sterge subcategoria"
+    }
+  }
+}

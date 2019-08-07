@@ -1,0 +1,9 @@
+- Subscribe / Unsubscribe
+- Propose event
+- Propose another date / time for event
+- Email notifications
+- Subevent / Tasks
+- Comments
+- Chat
+- Share location
+- Search event by category

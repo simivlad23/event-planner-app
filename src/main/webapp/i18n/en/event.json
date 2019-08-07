@@ -1,0 +1,14 @@
+{
+  "event-page": {
+    "page-title": "Events",
+    "sidebar": {
+      "title": "Title:",
+      "description": "Description:",
+      "location": "Location:",
+      "eventCategory": "Event category:",
+      "eventSubcategory": "Event subcategories:",
+      "userGroup": "User group:",
+      "dateTime": "Date and time of event:"
+    }
+  }
+}

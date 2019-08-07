@@ -1,0 +1,14 @@
+{
+  "dashboard-page": {
+    "navbar": {
+      "buttonTitle": "Add group"
+    },
+    "dashboard": {
+      "buttonTitle": "Add event",
+      "joinGroup": "Join Group",
+      "pendding": "Pending",
+      "linkTitle": "View All Events",
+      "noEventsMessage": "There are no events yet. Propose one!"
+    }
+  }
+}

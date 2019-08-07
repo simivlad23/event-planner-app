@@ -1,0 +1,14 @@
+{
+  "event-page": {
+    "page-title": "Evenimente",
+    "sidebar": {
+      "title": "Titlu:",
+      "description": "Descriere:",
+      "location": "Locatie:",
+      "eventCategory": "Categoria evenimentului:",
+      "eventSubcategory": "Subcategorii:",
+      "userGroup": "Grupul de utilizatori:",
+      "dateTime": "Data si ora evenimentului:"
+    }
+  }
+}

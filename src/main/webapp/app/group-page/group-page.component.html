@@ -1,0 +1,60 @@
+<!--<p-sidebar *ngFor="let user of allUsers" igxRipple igxRippleTarget=".igx-list__item-content">-->
+<p-sidebar [(visible)]="showUsers" position="right">
+    <mat-list *ngFor="let user of allUsers">
+        <mat-list-item> {{ user.firstName + " " + user.lastName }} </mat-list-item>
+    </mat-list>
+</p-sidebar>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" opened style=" max-width:30%; word-break:keep-all;">
+        <mat-list-item style="font-size: 30px">
+            <span style="font-style: oblique; color: darkgrey">Group Name</span>
+            <span style="color: royalblue">{{group.name}}</span>
+        </mat-list-item>
+
+        <br>
+        <button (click)="showAllUsers()" class="btn btn-primary" jhiTranslate="group-page.button.view-users">View all
+            users
+        </button>
+
+        <button (click)="addUserToGroup()" class="btn btn-primary"
+                jhiTranslate="group-page.button.show-add-users-popup">Text
+        </button>
+        <br>
+        <br>
+        <button [routerLink]="['/events/add', group.id]"
+                class="btn btn-primary" jhiTranslate="group-page.button.go-event-page">Text
+        </button>
+
+    </mat-drawer>
+    <mat-drawer-content style="width: 70%; float: right">
+        <!--        <div id="tool" data-toggle="tooltip" data-trigger="manual" placement="top" [style]="tooltipStyle" [ngbTooltip]="tooltipText">salut</div>-->
+
+        <!--        (eventMouseEnter)="showTooltip($event)"-->
+        <!--        (eventMouseLeave)="hideTooltip($event)"-->
+        <full-calendar
+            (eventClick)="navigateTo($event)"
+
+            [buttonText]="{ today: todaybutton }"
+            [events]="events"
+            [firstDay]=1
+            [header]="{
+                left: 'prev, today',
+                center: 'title',
+                right: 'today, next'
+              }"
+            [locale]="language"
+            [plugins]="calendarPlugins"
+            [eventTimeFormat]="{
+                hour: '2-digit',
+                minute: '2-digit'
+            }"
+            eventBackgroundColor="#33b8ff"
+            defaultView="dayGridMonth"> <!-- todo somehow in this function -->
+
+        </full-calendar>
+
+
+    </mat-drawer-content>
+</mat-drawer-container>
+

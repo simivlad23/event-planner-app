@@ -1,0 +1,16 @@
+{
+  "event-add": {
+    "page-title": "Creeaza/editeaza Eveniment",
+    "title": "Creeaza/editeaza un eveniment",
+    "instruction": "Completati formularul cu toate datele:",
+    "form": {
+      "title": "Titlu",
+      "description": "Descriere",
+      "location": "Locatie",
+      "eventCategory": "Categorie de eveniment",
+      "dateTime": "Data si ora evenimentului",
+      "button": "Salveaza"
+    },
+    "success": "Evenimentul a fost salvat"
+  }
+}

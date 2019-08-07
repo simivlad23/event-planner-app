@@ -1,0 +1,18 @@
+{
+  "event-subcategory": {
+    "form": {
+      "success": "Subcategory saved!",
+      "warning": "Subcategory already exists!",
+      "name": "Subcategory name:",
+      "button": "Save"
+    },
+    "view": {
+      "title": "Add subcategories:",
+      "success": "Subcategory created"
+    },
+    "validate": {
+      "minlength": "Subcategory name is required to be at least 3 characters.",
+      "maxlength": "Subcategory name cannot be longer than 50 characters."
+    }
+  }
+}

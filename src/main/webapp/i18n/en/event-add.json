@@ -1,0 +1,16 @@
+{
+  "event-add": {
+    "page-title": "Create/edit Event",
+    "title": "Create/edit an event",
+    "instruction": "Please fill in with all the data:",
+    "form": {
+      "title": "Title",
+      "description": "Description",
+      "location": "Location",
+      "eventCategory": "Event category",
+      "dateTime": "Date and time of event",
+      "button": "Save"
+    },
+    "success": "Event was successfully saved"
+  }
+}

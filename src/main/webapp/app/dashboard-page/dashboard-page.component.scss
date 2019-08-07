@@ -1,0 +1,45 @@
+.table {
+  float: right;
+  ///align: right;
+  width: 10%;
+  border: 0px;
+}
+
+.table td {
+  min-width: 50px;
+}
+
+.div1 {
+  border-radius: 5px;
+  border: 2px solid #73ad21;
+  margin: 10px;
+}
+
+.linkRoute {
+  color: black;
+  position: relative;
+  text-decoration: none;
+}
+
+.linkRoute:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: blue;
+  transition: width 0.2s ease;
+  -webkit-transition: width 0.2s ease;
+}
+
+.linkRoute:hover:after {
+  width: 100%;
+  left: 0;
+  background: lime;
+}
+
+.fontText {
+  font-size: 30px;
+}

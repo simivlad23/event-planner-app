@@ -1,0 +1,9 @@
+{
+  "add-user-group": {
+    "title": "Create a Group",
+    "name": "Group Name",
+    "select-mess": "Select the users",
+    "selected": "Selected",
+    "createButton": "Create group"
+  }
+}

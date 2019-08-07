@@ -1,0 +1,11 @@
+{
+  "group-page": {
+    "page-title": "Grup",
+    "button": {
+      "go-event-page": "Creeaza eveniment",
+      "view-users": "Vizualizare utilizatori",
+      "show-add-users-popup": "Adauga utilizatori",
+      "add-users": "Adauga"
+    }
+  }
+}

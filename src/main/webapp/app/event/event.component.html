@@ -1,0 +1,101 @@
+<mat-drawer-container>
+    <mat-drawer mode="side" opened style=" max-width:30%; word-break:keep-all;">
+        <h2 style="font-weight: bold">{{event.title}}</h2>
+
+        <h3 class="text-success" jhiTranslate="event-page.sidebar.dateTime" style="font-weight: bold">Date and
+            time:</h3>
+
+        <a [routerLink]="['/events/add', event.userGroup.id]" class="btn btn-primary" (click)="editEvent()"> Edit event</a>
+
+        <h4>{{event.dateTime| date:'yyyy-MM-dd HH:mm:ss'}}</h4>
+
+        <h3 class="text-success" jhiTranslate="event-page.sidebar.location" style="font-weight: bold">Location:</h3>
+        <h4>{{event.location}}</h4>
+
+        <h3 class="text-success" jhiTranslate="event-page.sidebar.description" style="font-weight: bold">
+            Description:</h3>
+        <h4  style="text-align: justify">{{event.description}}</h4>
+
+        <h3 class="text-success" jhiTranslate="event-page.sidebar.userGroup" style="font-weight: bold">User group:</h3>
+        <h4>{{event.userGroup.name}}</h4>
+
+        <h3 class="text-success" jhiTranslate="event-page.sidebar.eventCategory" style="font-weight: bold">Event
+            Category:</h3>
+        <h4>{{event.eventCategory.name}}</h4>
+
+        <h3 class="text-success" jhiTranslate="event-page.sidebar.eventSubcategory" style="font-weight: bold">Event
+            Subcategories:</h3>
+        <div *ngFor="let subcategory of event.eventSubcategories;let i = index">
+            <h4>{{subcategory.name}}</h4>
+        </div>
+
+        <jhi-counter [_eventId]="event.id.toString()" style="float:left"></jhi-counter>
+
+    </mat-drawer>
+
+    <mat-divider [vertical]="true"></mat-divider>
+
+    <mat-drawer-content [style.height.px]="screenHeight * 75/100" style="width: 70%; float: right">
+        <div class="ui-g">
+            <div class="ui-g-9">
+                <p-gmap #gmap (onOverlayClick)="handleOverlayClick($event)"
+                        (onOverlayDragEnd)="handleDragEnd($event)"
+                        [options]="options" [overlays]="overlays"
+                        [style]="{'width':'100%','height':'320px', 'margin-bottom': '1em'}"></p-gmap>
+
+                <button (click)="zoomIn(gmap.getMap())" icon="pi pi-plus" label="Zoom In" pButton
+                        style="margin-right:.25em"
+                        type="button"></button>
+                <button (click)="zoomOut(gmap.getMap())" icon="pi pi-minus" label="Zoom Out" pButton
+                        type="button"></button>
+            </div>
+
+            <div class="ui-g-3">
+                <h3>SubEvents</h3>
+
+                <p-dropdown (onChange)="changeFocusSubEvent(gmap.getMap())" [(ngModel)]="selectedSubEvent"
+                            [options]="subEvents" filter="true">
+                    <ng-template let-item pTemplate="selectedItem">
+                        <span style="vertical-align:middle; margin-left: .5em">{{item.label}}</span>
+                    </ng-template>
+                    <ng-template let-subEvent pTemplate="item">
+                        <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+                            <div style="font-size:14px;float:left;margin-top:4px">{{subEvent.label}}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+
+            </div>
+        </div>
+        <br>
+
+        <jhi-comments [_event]="event"></jhi-comments>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<p-dialog [(visible)]="dialogVisible" [style]="{'width': '300px'}" [transitionOptions]="'100ms'" header="New Location">
+    <div *ngIf="selectedPosition" class="ui-g ui-fluid">
+        <div class="ui-g-2"><label for="title">Label</label></div>
+        <div class="ui-g-10"><input [(ngModel)]="markerTitle" id="title" pInputText type="text"></div>
+
+        <div class="ui-g-2"><label for="lat">Lat</label></div>
+        <div class="ui-g-10"><input [ngModel]="selectedPosition.lat()" id="lat" pInputText readonly type="text"></div>
+
+        <div class="ui-g-2"><label for="lng">Lng</label></div>
+        <div class="ui-g-10"><input [ngModel]="selectedPosition.lng()" id="lng" pInputText readonly type="text"></div>
+
+        <div class="ui-g-2"><label>Drag</label></div>
+        <div class="ui-g-10">
+            <p-checkbox [(ngModel)]="draggable" [style]="{'margin-top':'.25em'}" binary="true"></p-checkbox>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button (click)="addMarker()" icon="pi pi-plus" label="Add Marker" pButton type="button"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+

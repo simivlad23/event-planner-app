@@ -1,0 +1,13 @@
+- [ ] Set yourself in Assignee
+- [ ] Check Acceptance Criterias
+- [ ] Check code style
+- [ ] Check Unit Tests (at least 80% coverage)
+- [ ] Check SOLID
+- [ ] Check DRY
+- [ ] Check YAGNI
+- [ ] Functions no longer than 50 lines
+- [ ] Rows no longer than 200 characters
+- [ ] No static and global variables unless really necessary
+- [ ] No singleton classes unless really necessary
+- [ ] Exception handling
+- [ ] Logged context

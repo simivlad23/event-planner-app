@@ -1,0 +1,40 @@
+<table class="table">
+    <tr>
+        <td>
+            <button (click)="vote('yes')" *ngIf="this.myVote !== 'yes'"
+                    class="btn btn-success buttonUnchose" jhiTranslate="counter.yes" type="button">
+                Success
+            </button>
+            <button (click)="vote('yes')" *ngIf="this.myVote  === 'yes'"
+                    class="btn btn-success" jhiTranslate="counter.yes" type="button">
+                Success
+            </button>
+        </td>
+        <td>
+            <button (click)="vote('maybe')" *ngIf="this.myVote !== 'maybe'"
+                    class="btn btn-warning buttonUnchose" jhiTranslate="counter.maybe" type="button">
+                Success
+            </button>
+            <button (click)="vote('maybe')" *ngIf="this.myVote === 'maybe'"
+                    class="btn btn-warning" jhiTranslate="counter.maybe" type="button">
+                Success
+            </button>
+        </td>
+        <td>
+            <button (click)="vote('no')" *ngIf="this.myVote !== 'no'"
+                    class="btn btn-danger buttonUnchose" jhiTranslate="counter.no" type="button">
+                Success
+            </button>
+
+            <button (click)="vote('no')" *ngIf="this.myVote === 'no'"
+                    class="btn btn-danger" jhiTranslate="counter.no" type="button">
+                Success
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>{{ yesVotes }}</td>
+        <td>{{ maybeVotes }}</td>
+        <td>{{ noVotes }}</td>
+    </tr>
+</table>

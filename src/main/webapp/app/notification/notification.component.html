@@ -1,0 +1,102 @@
+<p-toast [hideTransitionOptions]="'0ms'" [showTransitionOptions]="'0ms'" [style]="{marginTop: '80px'}"
+         life="2000"></p-toast>
+
+<button (click)="viewSideBar()" class="btn btn-primary btn-lg text-light mb-5" jhiTranslate="notifications.filter">
+    Filter
+</button>
+
+<div *ngFor="let notification of userNotifications">
+    <div class="jumbotron" style="position: relative;">
+        <span
+            style="position: absolute; top: 5%; right: 2.3%">{{ notification.dateTime | date:'dd-MM-yyyy HH:mm'}}</span>
+        <span class="badge badge-light" style="float: left">{{ notification.type }}</span>
+
+        <div *ngIf="notification.read  === true; else unread">
+            <span class="badge badge-light ml-5 myBadge" jhiTranslate="notifications.read">
+                read
+            </span>
+        </div>
+        <ng-template #unread>
+            <span class="badge badge-dark ml-5 myBadge" jhiTranslate="notifications.unread">
+                unread
+            </span>
+        </ng-template>
+
+        <hr class="my-4">
+        <p class="lead"><span
+            style="color: dodgerblue; font-style: oblique">From</span> {{ notification.sentBy.firstName }}</p>
+        <p class="lead"><span style="color: dodgerblue; font-style: oblique">Message</span> {{ notification.message }}
+        </p>
+        <hr class="my-4">
+        <div *ngIf="notification.type === 'GROUP_REQUEST'">
+            <a (click)="showJoinRequest(notification)"
+               class="btn btn-primary btn-lg text-light" type="button" jhiTranslate="notifications.details">
+                Show details
+            </a>
+        </div>
+        <div *ngIf="notification.type === 'REMINDER'">
+            <a (click)="showReminder(notification)"
+               class="btn btn-primary btn-lg text-light" type="button" jhiTranslate="notifications.details">
+                Show details
+            </a>
+        </div>
+        <div *ngIf="notification.type === 'INFO'">
+            <a (click)="showInfo(notification)"
+               class="btn btn-primary btn-lg text-light" type="button" jhiTranslate="notifications.details">
+                Show details
+            </a>
+        </div>
+    </div>
+</div>
+
+<p-toast [baseZIndex]="5000" [modal]="true" key="joinGroupRequest" position="center">
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+            <h3> {{ message.detail }}</h3>
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-6">
+                    <button (click)="acceptGroupRequest()" class="ui-button-raised ui-button-success" label="Accept"
+                            pButton type="button"></button>
+                </div>
+                <div class="ui-g-6">
+                    <button (click)="rejectGroupRequest()" class="ui-button-raised ui-button-danger" label="Reject"
+                            pButton type="button"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+
+<p-toast [baseZIndex]="5000" [modal]="true" key="reminder" position="center">
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+            <h3>{{ message.detail }}</h3>
+        </div>
+    </ng-template>
+</p-toast>
+
+<p-toast [baseZIndex]="5000" [modal]="true" key="info" position="center">
+    <ng-template let-message pTemplate="message">
+        <div style="text-align: center">
+            <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+            <h3>{{ message.detail }}</h3>
+        </div>
+    </ng-template>
+</p-toast>
+
+<p-sidebar [(visible)]="showSidebar" position="right">
+    <div class="ui-g-12">
+        <p-radioButton (click)="showAllReadNotificationsForUser()" [(ngModel)]="selectedRadioButton" inputId="opt1"
+                       label="Read" name="group1" value="Read"></p-radioButton>
+    </div>
+    <div class="ui-g-12">
+        <p-radioButton (click)="showAllUnreadNotificationsForUser()" [(ngModel)]="selectedRadioButton" inputId="opt1"
+                       label="Unread" name="group1" value="Unread"></p-radioButton>
+    </div>
+    <div class="ui-g-12">
+        <p-radioButton (click)="showAllNotificationsForUser()" [(ngModel)]="selectedRadioButton" checked="checked"
+                       inputId="opt1" label="All" name="group1" value="All"></p-radioButton>
+    </div>
+</p-sidebar>

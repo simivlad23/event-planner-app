@@ -1,0 +1,46 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.internship.eventplanner",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "monolith",
+    "baseName": "EventPlanner",
+    "packageName": "com.internship.eventplanner",
+    "packageFolder": "com/internship/eventplanner",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "OTQwMjdmNTJkZWJkYzIxODk1MDE0ZDEwZGQ2ZjUyYTc1ODI1NzRlMDExMWJkOWQwNDhjYzBlYjY3YWE2MDExODQ2ZDBiY2I2Zjg5YTc5ZDk4OTgzNGJiZmNkNTU4ZDYyODMwZmNjZTAxNTM2ZjUyZWUwYWI3NWMyODk1NDc1OGI=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-swagger-cli",
+        "version": "3.0.1"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "ro"],
+    "herokuAppName": "event-planner-internship",
+    "herokuDeployType": "jar"
+  }
+}

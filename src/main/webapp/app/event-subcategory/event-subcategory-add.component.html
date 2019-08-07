@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h4 class="modal-title" jhiTranslate="event-subcategory.view.title">Add subcategory</h4>
+</div>
+<div class="modal-body">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form (ngSubmit)="save()" [formGroup]="subcategoryForm" name="subcategoryForm">
+                <label class="form-control-label" for="name" jhiTranslate="event-subcategory.form.name">Name</label>
+                <input class="form-control" formControlName="name" id="name" name="name" type="text">
+                <div *ngIf="subcategoryForm.invalid">
+                    <small class="form-text text-danger" *ngIf="subcategoryForm.get('name').errors.minlength"
+                           jhiTranslate="event-subcategory.validate.minlength">
+                        Subcategory name is required to be at least 3 character.
+                    </small>
+                    <small class="form-text text-danger" *ngIf="subcategoryForm.get('name').errors.maxlength"
+                           jhiTranslate="event-subcategory.validate.maxlength">
+                        Subcategory name cannot be longer than 50 characters.
+                    </small>
+                </div>
+                <br>
+                <button [disabled]="subcategoryForm.invalid || isSaving" class="btn btn-primary"
+                        jhiTranslate="event-subcategory.form.button" type="submit">Save
+                </button>
+            </form>
+        </div>
+
+        <div *ngIf="successful" class="alert alert-success" id="successAlert">
+            <strong jhiTranslate="event-subcategory.form.success">Subcategory saved!</strong>
+        </div>
+        <div *ngIf="unsuccessful" class="alert alert-warning">
+            <strong jhiTranslate="event-subcategory.form.warning">Subcategory already exists!</strong>
+        </div>
+
+
+    </div>
+</div>

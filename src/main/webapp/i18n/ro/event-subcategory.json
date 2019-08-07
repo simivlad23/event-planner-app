@@ -1,0 +1,18 @@
+{
+  "event-subcategory": {
+    "form": {
+      "success": "Subcategorie salvata!",
+      "warning": "Subcategoria exista!",
+      "name": "Numele subcategoriei:",
+      "button": "Salveaza"
+    },
+    "view": {
+      "title": "Adauga subcategorii:",
+      "success": "Subcategoria a fost creata"
+    },
+    "validate": {
+      "minlength": "Numele subcategoriei trebuie să aibă cel puțin 3 caractere.",
+      "maxlength": "Numele subcategoriei poate avea maxim 50 de caractere."
+    }
+  }
+}

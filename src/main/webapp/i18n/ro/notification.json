@@ -1,0 +1,9 @@
+{
+  "notifications": {
+    "title": "Notificari",
+    "details": "Afiseaza detalii",
+    "filter": "Filtreaza",
+    "read": "citit",
+    "unread": "necitit"
+  }
+}

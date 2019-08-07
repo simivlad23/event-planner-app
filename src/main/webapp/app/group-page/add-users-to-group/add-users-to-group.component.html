@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h4 class="modal-title" jhiTranslate="add-user-group.select-mess"> Select the users</h4>
+</div>
+<div class="modal-body">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+
+            <p-listbox [(ngModel)]="selectedUsers" [listStyle]="{'max-height':'200px'}" [options]="allUsers"
+                       [style]="{'width':'100%'}"
+                       checkbox="checkbox" filter="filter"
+                       multiple="multiple"
+                       optionLabel="firstName">
+        <p-header>
+            <i aria-hidden="true" class="fa fa-users"></i>
+            Users
+        </p-header>
+    </p-listbox>
+
+            <button (click)="addUserToGroup()" class="btn btn-primary" jhiTranslate="group-page.button.add-users"
+                    style="width: 100%">Add
+            </button>
+        </div>
+    </div>
+</div>
+

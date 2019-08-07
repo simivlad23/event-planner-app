@@ -1,0 +1,81 @@
+<form (ngSubmit)="save()" [formGroup]="eventCategoryForm" name="eventCategoryForm">
+    <label class="form-control-label" for="name" jhiTranslate="event-category.form.name">Name</label>
+    <input class="form-control" formControlName="name" id="name" name="name" type="text">
+
+    <div
+        *ngIf="eventCategoryForm.get('name').invalid && (eventCategoryForm.get('name').dirty || eventCategoryForm.get('name').touched)">
+        <small *ngIf="eventCategoryForm.get('name').errors.required"
+               class="form-text text-danger" jhiTranslate="event-category.validate.name.required">
+            Your first name is required.
+        </small>
+        <small *ngIf="eventCategoryForm.get('name').errors.minlength"
+               class="form-text text-danger" jhiTranslate="event-category.validate.name.minlength">
+            Your first name is required to be at least 1 character.
+        </small>
+        <small *ngIf="eventCategoryForm.get('name').errors.maxlength"
+               class="form-text text-danger" jhiTranslate="event-category.validate.name.maxlength">
+            Your first name cannot be longer than 50 characters.
+        </small>
+    </div>
+
+    <button [disabled]="eventCategoryForm.invalid" class="btn btn-primary" jhiTranslate="event-category.form.button"
+            type="submit">Save
+    </button>
+</form>
+
+<small *ngIf="response.includes('fail')" class="form-text text-warning"
+       jhiTranslate="event-category.form.response.same-name">
+    {{response}}
+</small>
+<small *ngIf="response.includes('null')" class="form-text text-warning"
+       jhiTranslate="event-category.form.response.null">
+    {{response}}
+</small>
+<small *ngIf="response.includes('success')" class="form-text text-success"
+       jhiTranslate="event-category.form.response.success">
+    {{response}}
+</small>
+<small *ngIf="response.includes('error')" class="form-text text-danger"
+       jhiTranslate="event-category.form.response.error">
+    {{response}}
+</small>
+
+
+<h2 jhiTranslate="event-category.view.title"> Categories: </h2>
+<br>
+<div *ngFor="let cat of categories, let i = index">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="alert alert-primary">
+                {{cat.name}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-panel-description>
+            <button (click)="addSubcategory(cat.id)" class="btn btn-primary"
+                    jhiTranslate="event-category.subcategory.add">
+                Add subcategory
+            </button>
+        </mat-panel-description>
+        <mat-card>
+            <table>
+                <tbody *ngFor="let sub of cat.subcategories, let i = index">
+                <tr>
+                    <td>
+                        {{sub.name}}
+                        <p>
+                            <button (click)="deleteSubcategory(sub.id)" class="btn btn-primary"
+                                    jhiTranslate="event-category.subcategory.delete">
+                                Delete subcategory
+                            </button>
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </mat-card>
+    </mat-expansion-panel>
+</div>
+
+
+
+
